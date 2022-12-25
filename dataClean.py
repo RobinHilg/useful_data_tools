@@ -9,5 +9,5 @@ def outlierRemoval(data,outlierInd):
 def meaninglessFeaturesRemoval(data):
   indices=np.zeros(0)
   for i in range (0,len(data[0,:])):
-    if np.all(data[:,i]==data[0,i]): indices=np.append(i)
+    if np.all(data[:,i]==data[0,i]): indices=np.append(indices,i)
   return np.delete(data,obj=indices,axis=1), np.shape(np.delete(data,obj=indices,axis=1))
