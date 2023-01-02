@@ -5,9 +5,12 @@ def outlierRemoval(data,outlierInd):
   data=np.delete(data,obj=outlierInd,axis=0)
   return data
 
-#Inp data, output data cleared of meaningless features with 0 Variance and new data shape.
+
+
+
+#Inp data, output data cleared of meaningless features with 0 Variance and returns removed indices.
 def meaninglessFeaturesRemoval(data):
-  indices=np.zeros(0)
+  indices=np.zeros(0,dtype=int)
   for i in range (0,len(data[0,:])):
-    if np.all(data[:,i]==data[0,i]): indices=np.append(indices,i)
-  return np.delete(data,obj=indices,axis=1), np.shape(np.delete(data,obj=indices,axis=1))
+    if np.all(data[:,i]==data[0,i]): indices=np.append(indices,int(i))
+  return np.delete(data,obj=indices,axis=1), indices
